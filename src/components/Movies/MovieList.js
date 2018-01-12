@@ -15,6 +15,7 @@ class MovieList extends Component{
            .then(response =>{
                 this.setState({movies: response.data.results})
             })}
+            this.moviesToRender = [...this.state.movies];
         } 
     
     nameFilter = (event) => {
@@ -35,11 +36,17 @@ class MovieList extends Component{
 
 
     render(){
-       
-       let movies = this.moviesToRender.map((movie, index) => {
+        let movies = null;
+       if(this.state.filter===''){
+        movies = this.state.movies.map((movie, index) => {
+            return <Movie key = {movie.id} id={movie.id} name= {movie.title} rate= {movie.vote_average}/>  
+       })
+       } else {
+       movies = this.moviesToRender.map((movie, index) => {
           if(movie!==null)
            return <Movie key = {movie.id} id={movie.id} name= {movie.title} rate= {movie.vote_average}/>  
-       })
+           else return undefined
+       })}
        console.log(movies)
        return <div>
            <p>Fiter by title <input margin='5 5 5 5'type='text' onChange={this.nameFilter} value={this.state.filter} /></p>
