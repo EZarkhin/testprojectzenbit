@@ -1,8 +1,23 @@
 .Movie {
-    width: 60%;
+    
     margin: auto;
     border: 1px solid #eee;
     box-shadow: 0,2px,3px #ccc;
     padding: 16px;
     text-align: center;
+}
+
+.Details{
+    text-align: left;
+}
+.Image{
+    width: 50%
+}
+.LeftColumn{
+    float: left;
+    width: 50%;
+}
+.RightColumn{
+    float: right;;
+    width: 50%;
 }
